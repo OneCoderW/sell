@@ -1,13 +1,19 @@
 package com.imooc.dataobject;
 
+import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * 类目
  */
 @Entity
+@DynamicUpdate
+@Data
 public class ProductCategory {
     /** 类目id. */
     @Id
@@ -18,29 +24,13 @@ public class ProductCategory {
     private String categoryName;
 
     /** 类目编号. */
-    private String categoryType;
+    private Integer categoryType;
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public ProductCategory() {
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
+    public ProductCategory(String categoryName, Integer categoryType) {
         this.categoryName = categoryName;
-    }
-
-    public String getCategoryType() {
-        return categoryType;
-    }
-
-    public void setCategoryType(String categoryType) {
         this.categoryType = categoryType;
     }
 }
